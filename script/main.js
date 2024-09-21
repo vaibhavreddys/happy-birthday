@@ -24,6 +24,9 @@ const fetchData = () => {
     });
 };
 
+var audioplay = document.createElement('audio');
+audioplay.setAttribute('src', '../audio/mahaan_long.mp3');
+
 // Animation Timeline
 const animationTimeline = () => {
   // Spit chars that needs to be animated individually
@@ -195,6 +198,11 @@ const animationTimeline = () => {
       0.2,
       "+=1"
     )
+    .to(".lydia-dp", 1, {
+      onStart:function(){audioplay.autoplay = true; audioplay.play()}
+    },
+    "-=1.8"
+    )
     .staggerFromTo(
       ".baloons img",
       2.5,
@@ -302,5 +310,35 @@ const animationTimeline = () => {
   });
 };
 
-// Run fetch and animation in sequence
-fetchData();
+document.querySelector('.btn-2 a').addEventListener('click', function() {
+  this.classList.add('clicked');
+
+  // Optionally, remove the class after some time to reset the state
+  setTimeout(() => {
+    this.classList.remove('clicked');
+  }, 1000); // Adjust the timeout as needed
+});
+
+document.getElementById('welcome_tag').addEventListener('contextmenu', function(event) {
+  // Prevent the default right-click menu
+  event.preventDefault();
+  // Simulate a left-click
+  this.click();
+});
+
+document.getElementById("welcome_tag").addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent default anchor behavior
+  console.log("Welcome clicked")
+  setTimeout(() => {
+    // console.log("Inside timeout")
+    // Hide the first div
+    document.getElementById("welcome_div").style.display = "none";
+
+    // Show the second div
+    document.getElementById("content_div").style.display = "block";
+
+    // console.log("Starting Animations")
+    // Optionally, you can add animations here with GSAP or other libraries
+    fetchData();
+  }, 1000);
+});
