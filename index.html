@@ -3,24 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hi Esha! :)</title>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400" rel="stylesheet">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/style1.css">
+  <link rel="stylesheet" href="style/timer.css">
 </head>
 
 <body>
-    <div class="btn-2" id="welcome_div">
-      <a href="" id="welcome_tag"><span>What is this guys!!</span></a>
+  <div id="timer">
+    <div id="days"></div>
+    <div id="hours"></div>
+    <div id="minutes"></div>
+    <div id="seconds"></div>
+  </div>
+    <div class="btn-2" id="welcome_div" style="display: none;">
+      <a href="" id="welcome_tag"><span>What is this guys?!</span></a>
     </div>
   <div class="container" id="content_div" style="display: none;">
     <div class="one">
       <h1 class="one">
         <span data-node-name="greeting">Hey</span>
-        <span data-node-name="name">Lydia</span>
+        <span data-node-name="name">Esha</span>
       </h1>
       <p class="two" data-node-name="greetingText">I really like your name btw!</p>
     </div>
@@ -139,6 +146,7 @@
       <p data-node-name="outroText">Okay, now come back and tell us if you liked it.</p>
       <p id="replay" data-node-name="replayText">Or click, if you want to watch it again.</p>
       <p class="last-smile" data-node-name="outroSmiley">:)</p>
+      <p data-node-name="dob" style="display: none;"></p>
     </div>
   </div>
 </body>

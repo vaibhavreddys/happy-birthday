@@ -18,6 +18,7 @@
   "wishHeading": "Happy Birthday!",
   "wishText": "At 24, you’re basically a professional adult… or at least pretending to be! ;)",
   "outroText": "Okay, now please tell us if you liked it.",
-  "replayText": "Or, try watching again you might like it :P",
-  "outroSmiley": ":)"
+  "replayText": "Or, watch again you might like it :P",
+  "outroSmiley": ":)",
+  "dob":""
 }

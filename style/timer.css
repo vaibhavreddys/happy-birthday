@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css?family=Covered+By+Your+Grace);
+
+#days {
+  font-size: 200px;
+  color: #db4844;
+  font-family: 'Covered By Your Grace', cursive;
+}
+#hours {
+  font-size: 150px;
+  color: #f07c22;
+  font-family: 'Covered By Your Grace', cursive;
+}
+#minutes {
+  font-size: 100px;
+  color: #f6da74;
+  font-family: 'Covered By Your Grace', cursive;
+}
+#seconds {
+  font-size: 50px;
+  color: #abcd58;
+  font-family: 'Covered By Your Grace', cursive;
+}
+
+#timer {
+  display: inline-block;
+  line-height: 1;
+  padding: 20px;
+  font-size: 40px;
+}
+
+body {
+  text-align: center;
+  color: white;
+  background: #222;
+  transition: background-color 3s ease-in-out;
+}
+
+/* Class to trigger the background color transition */
+.fade-to-white {
+    /* background-color: white; */
+    animation: pulse 1s forwards;
+
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); background-color: white;}
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    #timer {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    #days {
+      font-size: 150px;
+    }
+    #hours {
+      font-size: 120px;
+    }
+    #minutes {
+      font-size: 80px;
+    }
+    #seconds {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #timer {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    #days {
+      font-size: 100px;
+    }
+    #hours {
+      font-size: 80px;
+    }
+    #minutes {
+      font-size: 60px;
+    }
+    #seconds {
+      font-size: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #timer {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    #days {
+      font-size: 80px;
+    }
+    #hours {
+      font-size: 60px;
+    }
+    #minutes {
+      font-size: 40px;
+    }
+    #seconds {
+      font-size: 20px;
+    }
+  }

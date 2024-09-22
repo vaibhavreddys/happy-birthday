@@ -1,3 +1,9 @@
+let dob = undefined;
+
+// Prevent scrolling (if not done via CSS)
+document.body.style.overflow = 'hidden';
+document.documentElement.style.overflow = 'hidden';
+
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
@@ -14,11 +20,14 @@ const fetchData = () => {
             document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
           }
         }
-
+        if (dob == undefined) {
+          dob = data["dob"];
+        }
         // Check if the iteration is over
-        // Run amimation if so
         if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
-          animationTimeline();
+          // Run animation after button click not here!
+          // animationTimeline();
+          console.log("Data fetch completed: dob:"+dob);
         } 
       });
     });
@@ -310,6 +319,58 @@ const animationTimeline = () => {
   });
 };
 
+function changeBackground() {
+  document.getElementById("timer").style.display = "none";
+  document.getElementById("content_div").style.display = "block";
+  document.getElementById("welcome_div").style.display = "flex";
+  document.body.style.color = "black";
+  // document.body.style.backgroundColor = "white";
+  document.body.classList.add('fade-to-white');
+}
+
+var timeLeftDummy = 10;
+var timeLeft = 0;
+function makeTimer() {
+  // var endTime = new Date("September 23, 2024 16:20:00 GMT+05:30");
+  var endTime = new Date(dob); // Read from customize.json file
+  var endTime = (Date.parse(endTime)) / 1000;
+
+  var now = new Date();
+  var now = (Date.parse(now) / 1000);
+
+  if (dob === "") { // Debug mode
+    timeLeft = timeLeftDummy--;
+  } else {
+    timeLeft = endTime - now;
+  }
+
+  if (timeLeft <= 0) {
+    console.log("Countdown expired since " + timeLeft + " seconds.");
+    clearInterval(refreshIntervalId);
+    changeBackground();
+    return;
+  } else {
+    console.log("Countdown expires in " + timeLeft + " seconds");
+  }
+
+  var days = Math.floor(timeLeft / 86400);
+  var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+  var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+  var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+  if (hours < "10") { hours = "0" + hours; }
+  if (minutes < "10") { minutes = "0" + minutes; }
+  if (seconds < "10") { seconds = "0" + seconds; }
+
+  document.getElementById("days").innerHTML = days + "<span> Days</span>";
+  document.getElementById("hours").innerHTML = hours + "<span> Hours</span>";
+  document.getElementById("minutes").innerHTML = minutes + "<span> Minutes</span>";
+  document.getElementById("seconds").innerHTML = seconds + "<span> Seconds</span>";
+}
+
+// Update the timer every second
+var refreshIntervalId = setInterval(makeTimer, 1000);
+
 document.querySelector('.btn-2 a').addEventListener('click', function() {
   this.classList.add('clicked');
 
@@ -337,8 +398,10 @@ document.getElementById("welcome_tag").addEventListener("click", function(event)
     // Show the second div
     document.getElementById("content_div").style.display = "block";
 
-    // console.log("Starting Animations")
+    console.log("Starting Animations")
     // Optionally, you can add animations here with GSAP or other libraries
-    fetchData();
+    animationTimeline();
   }, 1000);
 });
+
+fetchData();
