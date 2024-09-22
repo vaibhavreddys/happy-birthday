@@ -33,8 +33,8 @@ const fetchData = () => {
     });
 };
 
-var audioplay = document.createElement('audio');
-audioplay.setAttribute('src', '../audio/mahaan_long.mp3');
+// var audioplay = document.createElement('audio');
+// audioplay.setAttribute('src', '../audio/mahaan_long.mp3');
 
 // Animation Timeline
 const animationTimeline = () => {
@@ -208,7 +208,11 @@ const animationTimeline = () => {
       "+=1"
     )
     .to(".lydia-dp", 1, {
-      onStart:function(){audioplay.autoplay = true; audioplay.play()}
+      onStart:function() {
+        // audioplay.autoplay = true; audioplay.play()
+        soundEffect.src = "../audio/mahaan_long.mp3";
+        soundEffect.play();
+      }
     },
     "-=1.8"
     )
@@ -387,9 +391,20 @@ document.getElementById('welcome_tag').addEventListener('contextmenu', function(
   this.click();
 });
 
+const soundEffect = new Audio();
 document.getElementById("welcome_tag").addEventListener("click", function(event) {
   event.preventDefault(); // Prevent default anchor behavior
   console.log("Welcome clicked")
+
+  /* iOS doesn't allow audio to played without explicit permission
+   * So this is a hack to simulate audio controls interaction
+   * And then use the same Audio() instance to play our track
+   */
+  soundEffect.autoplay = true;
+  // (This is a tiny MP3 file that is silent and extremely short - retrieved from https://bigsoundbank.com and then modified)
+  soundEffect.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+  soundEffect.play();
+
   setTimeout(() => {
     // console.log("Inside timeout")
     // Hide the first div
