@@ -1,4 +1,6 @@
 let dob = undefined;
+var timeLeftDummy = 10;
+var timeLeft = 0;
 
 // Prevent scrolling (if not done via CSS)
 document.body.style.overflow = 'hidden';
@@ -332,8 +334,6 @@ function changeBackground() {
   document.body.classList.add('fade-to-white');
 }
 
-var timeLeftDummy = 10;
-var timeLeft = 0;
 function makeTimer() {
   // var endTime = new Date("September 23, 2024 16:20:00 GMT+05:30");
   var endTime = new Date(dob); // Read from customize.json file
