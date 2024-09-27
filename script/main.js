@@ -335,7 +335,7 @@ function changeBackground() {
 }
 
 function makeTimer() {
-  // var endTime = new Date("September 23, 2024 16:20:00 GMT+05:30");
+  // var endTime = new Date("October 31, 2024 09:30:00 GMT+05:30");
   var endTime = new Date(dob); // Read from customize.json file
   var endTime = (Date.parse(endTime)) / 1000;
 
