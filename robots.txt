@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+sitemap: https://happy-birthday-esha.vercel.app/sitemap.txt

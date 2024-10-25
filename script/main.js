@@ -1,5 +1,5 @@
 let dob = undefined;
-var timeLeftDummy = 10;
+var timeLeftDummy = 1;
 var timeLeft = 0;
 
 // Prevent scrolling (if not done via CSS)
